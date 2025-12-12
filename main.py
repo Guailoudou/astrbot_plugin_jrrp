@@ -23,7 +23,7 @@ class MyPlugin(Star):
         user_name = event.get_sender_name()
         utc_8 = datetime.now(ZoneInfo("Asia/Shanghai"))
         msg_obj = event.message_obj
-        qq = message_obj.sender.user_id
+        qq = msg_obj.sender.user_id
         date_str = utc_8.strftime("/%y/%m%d")
         userseed = hash(date_str + qq + user_name)
         random.seed(userseed)
