@@ -22,8 +22,10 @@ class MyPlugin(Star):
         '''今日人品值查询，每个用户每天固定，范围1-100'''
         user_name = event.get_sender_name()
         utc_8 = datetime.now(ZoneInfo("Asia/Shanghai"))
+        msg_obj = event.message_obj
+        qq = message_obj.sender.user_id
         date_str = utc_8.strftime("/%y/%m%d")
-        userseed = hash(date_str + user_name)
+        userseed = hash(date_str + qq + user_name)
         random.seed(userseed)
 
         # 使用加权随机 - 高分概率更大
